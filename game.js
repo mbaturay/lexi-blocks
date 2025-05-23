@@ -7,11 +7,19 @@ const ctx = canvas.getContext('2d');
 // Game grid: 2D array, initially empty
 let grid = Array.from({ length: ROWS }, () => Array(COLS).fill(''));
 
+let nextLetter = randomLetter();
+
+function updateNextLetterDisplay() {
+    document.getElementById('next-letter-value').textContent = nextLetter;
+}
+
+// Update currentLetter to use nextLetter, and generate a new nextLetter after placing
 let currentLetter = {
     col: Math.floor(COLS / 2),
     row: 0,
-    value: randomLetter()
+    value: nextLetter
 };
+updateNextLetterDisplay();
 
 function randomLetter() {
     const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -74,23 +82,23 @@ function dropLetter() {
     } else {
         placeLetter();
         render();
-        const { foundWords, toClear } = findWordsOnBoard();
-        if (foundWords.length > 0) {
+        const { foundWords, toClear } = findWordsOnBoard ? findWordsOnBoard() : { foundWords: [], toClear: [] };
+        if (foundWords && foundWords.length > 0 && typeof clearAndCollapse === 'function') {
             clearAndCollapse(toClear, () => {
-                // Optionally, recursively check for new words after collapse
                 const result = findWordsOnBoard();
                 if (result.foundWords.length > 0) {
                     clearAndCollapse(result.toClear);
                 }
             });
-            // Return foundWords for scoring (could trigger event or callback)
-            // Example: updateScore(foundWords);
         }
+        // Use the nextLetter as the new falling letter
         currentLetter = {
             col: Math.floor(COLS / 2),
             row: 0,
-            value: randomLetter()
+            value: nextLetter
         };
+        nextLetter = randomLetter();
+        updateNextLetterDisplay();
     }
     render();
 }

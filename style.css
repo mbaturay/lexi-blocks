@@ -1,0 +1,39 @@
+body {
+    background: #222;
+    color: #fff;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+#game-container {
+    display: flex;
+    gap: 32px;
+    background: #333;
+    padding: 32px;
+    border-radius: 16px;
+    box-shadow: 0 4px 32px #000a;
+}
+#game-canvas {
+    background: #111;
+    border: 2px solid #555;
+    border-radius: 8px;
+    display: block;
+}
+#side-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    min-width: 120px;
+    justify-content: flex-start;
+}
+#score, #level, #next-letter {
+    font-size: 1.2em;
+    background: #222;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    text-align: center;
+}

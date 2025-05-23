@@ -1,0 +1,73 @@
+Project Name: LexiBlocks
+
+Game Concept Overview:
+LexiBlocks is a fast-paced, Tetris-inspired word game where falling blocks are alphabet letters. Players must strategically position letters to form valid words horizontally or vertically. As in Tetris, gameplay speeds up over time. Points are awarded for forming words, and smart logic guides the letter drops to promote solvable words.
+
+Product Requirements Document (PRD)
+
+1. Objective
+Create an engaging, educational, and challenging word game that combines spatial logic and vocabulary building.
+
+2. Target Audience
+
+    Casual gamers
+    Word puzzle enthusiasts
+    Students (with grading levels for vocabulary)
+
+3. Core Features
+
+    Letter blocks fall from the top
+    Player rotates/moves blocks to position
+    Valid words can form horizontally or vertically
+    Points are awarded for each valid word
+    Difficulty increases with levels (faster drops)
+    Word database is categorized by vocabulary grade level (Grade 1 to advanced)
+    Smart drop engine biases letter selections to ensure formable words are possible
+    Line clears when words are formed; score and space are updated
+    Player receives points for single and compound word formations (e.g., KIN and SKIN)
+
+4. Gameplay Mechanics
+
+    Grid Size: 10x20 (standard)
+    Letters drop in 1x1 blocks
+    Players can move left/right, rotate orientation, or drop letters fast
+    When a word is formed, it is validated and the word disappears (clears)
+    Combo scores for chained word formations
+
+5. Scoring System
+
+    Word Length Bonus: +10 points per letter
+    Grade Level Multiplier: (Grade level of the word)
+    Combo Bonus: +50 for each additional word formed in the same move
+    Level Bonus: Multiplied by current level
+
+6. Vocabulary Engine
+
+    Word list categorized by grade level (importable from common curriculum lists)
+    Smart engine predicts valid continuations based on current placed letters
+    Probability-biased letter generation (not fully random)
+    AI logic to balance challenge and solvability
+
+7. Level System
+
+    Every 1000 points = next level
+    Increased speed and slightly more complex letters/words
+
+8. Modes
+
+    Endless Mode
+    Timed Mode (2/5/10 min)
+    Challenge Mode (specific tasks, e.g., form 10 Grade 3 words)
+
+9. UI/UX Requirements
+
+    Keyboard input support
+    Minimal clean HTML/CSS layout with canvas/WebGL for game rendering
+    Score, level, and next-letter preview panel
+    Optional hints or auto-grade-level vocabulary practice
+
+10. Tech Stack
+
+    HTML5 + CSS3 + Vanilla JavaScript
+    WebGL or Canvas for game rendering
+    LocalStorage for save state
